@@ -1,0 +1,35 @@
+.App-header {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .App-header input {
+	padding: 10px;
+	font-size: 30px;
+	border: 10px solid rgba(255, 255, 255, 0.5);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) inset, 0 2px 10px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.5);
+	outline: none;
+	color: #333;
+	width: 50%;
+  }
+
+  .App-header button {
+    font-size: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 16px 65px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #777;
+    color: #fff;
+    outline: none;
+    border: 2px solid #F64C2B;
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
+    background: linear-gradient(#FB9575, #F45A38 48%, #EA1502 52%, #F02F17);
+  }
+

@@ -1,0 +1,95 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { logout, togglePostModal, toggleSettingsModal } from '../actions/app';
+import { Link, NavLink } from 'react-router-dom';
+import NewPostModal from './NewPostModal';
+import Auth from "./Auth";
+
+class Navbar extends Component {
+	constructor(props){
+		super(props);
+	}
+
+	render(){
+		return (
+			<>
+				{this.props.isVisible &&
+					<div className="navbar-cs bg-light d-flex flex-column justify-content-between">
+						<div className="d-flex flex-row flex-md-column">
+						<Auth>
+							<NavLink
+								to={'/u/' + this.props.profile.username}
+								className="navbar-cs__button"
+								data-balloon-pos="left"
+								aria-label="Профиль"
+								data-balloon-blunt>
+								<img src={`http://localhost:3000${this.props.profile.profilePic}`} style={{'width': '35px', 'height': '35px'}} className='img-fluid d-block mx-auto rounded-circle' />
+							</NavLink>
+							<div
+								className="navbar-cs__button" onClick={this.props.toggleSettingsModal}
+								data-balloon-pos="left"
+								aria-label="Настройки"
+								data-balloon-blunt>
+								<p className="text-center my-0"><i className="fas fa-cog fa-2x"></i></p>
+							</div>
+							<div
+								className="navbar-cs__button" onClick={this.props.togglePostModal}
+								data-balloon-pos="left"
+								aria-label="Добавить пост"
+								data-balloon-blunt>
+								<p className="text-center my-0"><i className="fas fa-plus-circle fa-2x"></i></p>
+							</div>
+						</Auth>
+							<NavLink
+								to={'/explore'}
+								className="navbar-cs__button"
+								activeClassName={'bg-brand text-white'}
+								data-balloon-pos="left"
+								aria-label="Посмотреть пользователей"
+								data-balloon-blunt>
+								<p className="text-center my-0"><i className="fas fa-compass fa-2x"></i></p>
+							</NavLink>
+
+						<Auth>
+							<div
+								className="navbar-cs__button"
+								onClick={this.props.logout}
+								data-balloon-pos="left"
+								aria-label="Выйти"
+								data-balloon-blunt>
+								<p className="text-center my-0"><i className="fas fa-sign-out-alt fa-2x"></i></p>
+							</div>
+						</Auth>
+						<Auth whenLogged={false}>
+							<NavLink
+								to='/'
+								className="navbar-cs__button"
+								onClick={this.props.logout}
+								data-balloon-pos="left"
+								aria-label="Войти"
+								data-balloon-blunt>
+									<p className="text-center my-0"><i className="fas fa-sign-in-alt fa-2x"></i></p>
+							</NavLink>
+						</Auth>
+						</div>
+						<div className="d-none d-md-block">
+							<img src="assets/images/small_logo.png" className="d-block mx-auto img-fluid" />
+						</div>
+					</div>
+				}
+			</>
+		)
+	}
+}
+
+const stateToProps = state => ({
+	isVisible: state.app.navbar.isVisible,
+	profile: state.app.logged
+})
+
+const dispatchToProps = dispatch => ({
+	logout: () => dispatch(logout()),
+	togglePostModal: () => dispatch(togglePostModal()),
+	toggleSettingsModal: () => dispatch(toggleSettingsModal()),
+})
+export default connect(stateToProps, dispatchToProps)(Navbar);

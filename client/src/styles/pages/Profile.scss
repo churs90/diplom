@@ -1,0 +1,165 @@
+.profile {
+	&__image {
+		&__icon {
+			position: absolute;
+			bottom: 7px;
+			left: 5px;
+		}
+	}
+
+	&__description {
+		p {
+			/*white-space: pre-line;*/
+		}
+	}
+}
+
+#newDescription {
+	resize: none;
+}
+
+.sidenav {
+	position: relative;
+	height: 100vh;
+	width: 600px;
+	background-image: url('../assets/images/bg_profile.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: left;
+	overflow-y: hidden;
+	transition: 1s all;
+
+	&--inactive {
+		transform: translateX(-450px);
+		width: 0px;
+	}
+
+	&__toggle {
+		position: fixed;
+		background-color: #ffffff;
+		color: black;
+		padding: 5px 10px;
+		left: 10px;
+		top: 10px;
+		z-index: 999;
+		transition: .5s all;
+
+		&--open {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__avatar {
+		width: 200px;
+		height: 200px;
+
+		&__image {
+			border: 5px solid white;
+			background-color: theme-color("brand");
+			transition: .8s all;
+		}
+
+		&--owner{
+			&__camera {
+				position: relative;
+				bottom: 180px;
+				opacity: 0;
+				color: theme-color("brand-secondary");
+				font-size: 45px;
+				left: 80px;
+				transition: .8s all;
+			}
+
+			&:hover {
+				.sidenav__avatar--owner__camera {
+					opacity: 1;
+					bottom: 135px;
+				}
+
+				.sidenav__avatar__image {
+					filter: grayscale(100%);
+				}
+			}
+		}
+	}
+
+	&__description {
+		font-family: 'Montserrat', sans-serif;
+
+		.title {
+			font-weight: 700;
+			font-size: 26px;
+		}
+	}
+}
+
+.profile {
+	&__body {
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: 100vh;
+		width: 100%;
+		padding: 0 5%;
+
+		&__textarea {
+			&__input {
+				resize: none;
+			}
+		}
+	}
+}
+
+.textDescription{
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.text {
+	font-weight: bold;
+	padding-left: 15px;
+	cursor: pointer;
+	.notification {
+		color: red;
+		font-weight: bold;
+		font-size: 30px;
+		margin-left: 10px;
+	}
+}
+
+.dialogsModal {
+	position: fixed;
+	width: 86%;
+	height: 90%;
+	background-color: #43FD9B;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	padding: 20px 90px;
+	overflow: auto;
+	border: 2px solid black;
+	border-radius: 10px;
+	.close {
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		background-color: black;
+		right: 5px;
+		top: 5px;
+		border-radius: 50%;
+		color: #ffffff;
+		font-weight: bold;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		opacity: 1;
+	}
+}
+
+@media (max-width: 768px) {
+	.sidenav {
+		position: fixed;
+		width: 100%;
+		z-index: 100;
+	}
+}
